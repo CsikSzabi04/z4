@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szabolcs Csík | Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="02.png">
+    <style>
+        /* Completely hide scrollbar */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        body {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            overflow-x: hidden;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-image {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 4rem 0;
+            scroll-snap-align: start;
+        }
+        
+        /* Full page scroll container */
+        .scroll-container {
+            scroll-snap-type: y mandatory;
+            height: 100vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+        
+        /* Custom animation delays */
+        .delay-100 {
+            transition-delay: 100ms;
+        }
+        .delay-200 {
+            transition-delay: 200ms;
+        }
+        .delay-300 {
+            transition-delay: 300ms;
+        }
+        .delay-400 {
+            transition-delay: 400ms;
+        }
+        .delay-500 {
+            transition-delay: 500ms;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans antialiased">
+    <!-- Enhanced Header -->
+    <header class="fixed w-full z-50 bg-gray-900 bg-opacity-90 backdrop-filter backdrop-blur-sm shadow-lg">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo/Brand -->
+                <div class="flex items-center">
+                    <img src="02.png" alt="Logo" class="h-10 w-10 mr-3">
+                    <span class="text-xl font-bold">Szabolcs Csík</span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#home" class="nav-link text-gray-300 hover:text-white transition">Home</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-white transition">About</a>
+                    <a href="#portfolio" class="nav-link text-gray-300 hover:text-white transition">Portfolio</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-white transition">Contact</a>
+                    <a href="https://www.wattpad.com/user/thejasonronin04" target="_blank" class="nav-link text-gray-300 hover:text-white transition">My Books</a>
+                    <a href="https://suno.com/playlist/08dc9ca7-c085-47ad-847f-ef0189a3ebfb" target="_blank" class="nav-link text-gray-300 hover:text-white transition">My Songs</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu hidden md:hidden absolute top-16 left-0 right-0 bg-gray-800 p-4 rounded-lg shadow-xl">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="text-gray-300 hover:text-white transition py-2">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-white transition py-2">About</a>
+                    <a href="#portfolio" class="text-gray-300 hover:text-white transition py-2">Portfolio</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition py-2">Contact</a>
+                    <a href="https://www.wattpad.com/user/thejasonronin04" target="_blank" class="text-gray-300 hover:text-white transition py-2">My Books</a>
+                    <a href="https://suno.com/playlist/08dc9ca7-c085-47ad-847f-ef0189a3ebfb" target="_blank" class="text-gray-300 hover:text-white transition py-2">My Songs</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Full page scroll container -->
+    <div class="scroll-container pt-16">
+        <!-- Home Section -->
+        <section id="home" class="section">
+            <div class="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center">
+                <div class="md:w-1/2 mt-10 md:mt-0">
+                    <h3 class="text-lg md:text-xl font-medium text-blue-400 mb-2 fade-in">Hi, I'm Szabolcs</h3>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in delay-100">
+                        <span class="gradient-text">Software Developer</span> 
+                        <br>& Tester
+                    </h1>
+                    <p class="text-gray-400 text-lg mb-8 max-w-lg fade-in delay-200">
+                        I build exceptional digital experiences with clean, efficient code. 
+                        All about creating solutions that make an impact.
+                    </p>
+                    <div class="flex flex-wrap gap-4 fade-in delay-300">
+                        <a href="#contact" class="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-medium hover:opacity-90 transition transform hover:-translate-y-1">
+                            Contact Me
+                        </a>
+                        <a href="#portfolio" class="px-8 py-3 border border-gray-700 rounded-full font-medium hover:bg-gray-800 transition">
+                            View Work
+                        </a>
+                    </div>
+                    
+                    <div class="mt-12 flex space-x-6 fade-in delay-400">
+                        <a href="https://www.linkedin.com/in/szabolcs-cs%C3%ADk-a4b767315/" target="_blank" class="text-gray-400 hover:text-blue-400 transition text-2xl">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/" target="_blank" class="text-gray-400 hover:text-gray-200 transition text-2xl">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:alexszabi04@gmail.com" class="text-gray-400 hover:text-red-400 transition text-2xl">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://www.instagram.com/cs_szabj04/" target="_blank" class="text-gray-400 hover:text-pink-500 transition text-2xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 flex justify-center hero-image fade-in delay-500">
+                    <img src="011.png" alt="Szabolcs Csík" class="rounded-full w-64 h-64 md:w-96 md:h-96 object-cover border-4 border-gray-700 shadow-xl">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section bg-gray-800">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-16 fade-in">
+                    <span class="gradient-text">About Me</span>
+                </h2>
+                
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/3 flex justify-center fade-in">
+                        <img src="45.png" alt="Profile" class="rounded-lg w-64 h-64 object-cover shadow-2xl">
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <h3 class="text-3xl font-bold mb-6 fade-in delay-100">
+                            <span class="gradient-text">Who am I?</span>
+                        </h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Software Developer Card -->
+                            <div class="bg-gray-800 p-6 rounded-xl border-l-4 border-blue-500 transform hover:-translate-y-2 transition duration-300 shadow-lg fade-in delay-200">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center mr-4">
+                                        <i class="fas fa-code text-blue-400"></i>
+                                    </div>
+                                    <h4 class="text-xl font-semibold">Software Developer</h4>
+                                </div>
+                                <p class="text-gray-300">
+                                    I transform ideas into functional solutions through clean, efficient code. 
+                                    All about building systems that solve real problems.
+                                </p>
+                            </div>
+                            
+                            <!-- Frontend & Design Card -->
+                            <div class="bg-gray-800 p-6 rounded-xl border-l-4 border-purple-500 transform hover:-translate-y-2 transition duration-300 shadow-lg fade-in delay-300">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center mr-4">
+                                        <i class="fas fa-paint-brush text-purple-400"></i>
+                                    </div>
+                                    <h4 class="text-xl font-semibold">Frontend & Design</h4>
+                                </div>
+                                <p class="text-gray-300">
+                                    I craft engaging, interactive experiences with attention to detail. 
+                                    From animations to UI/UX, I make digital products delightful to use.
+                                </p>
+                            </div>
+                            
+                            <!-- Cloud & DevOps Card -->
+                            <div class="bg-gray-800 p-6 rounded-xl border-l-4 border-green-500 transform hover:-translate-y-2 transition duration-300 shadow-lg fade-in delay-400">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center mr-4">
+                                        <i class="fas fa-cloud text-green-400"></i>
+                                    </div>
+                                    <h4 class="text-xl font-semibold">Cloud & DevOps</h4>
+                                </div>
+                                <p class="text-gray-300">
+                                    I architect and maintain cloud infrastructure that scales. 
+                                    AWS, GCP, CI/CD pipelines - I keep systems running smoothly.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Additional Details -->
+                        <div class="mt-8 bg-gray-800/50 p-6 rounded-xl border border-gray-700 backdrop-blur-sm fade-in delay-500">
+                            <h4 class="text-xl font-semibold mb-4 flex items-center">
+                                <span class="w-3 h-3 bg-red-500 rounded-full mr-3 animate-pulse"></span>
+                                <span class="gradient-text">Technical </span>
+                            </h4>
+                            <ul class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-400 mr-2"></i>
+                                    <span>Problem Solving</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-400 mr-2"></i>
+                                    <span>System Architecture</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-400 mr-2"></i>
+                                    <span>UI/UX Design</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-400 mr-2"></i>
+                                    <span>Cloud Infrastructure</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-400 mr-2"></i>
+                                    <span>API Development</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-400 mr-2"></i>
+                                    <span>Automated Testing</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-400 mr-2"></i>
+                                    <span>Performance Optimization</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-400 mr-2"></i>
+                                    <span>Continuous Deployment</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="section">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-16 fade-in">
+                    <span class="gradient-text">My Work</span>
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 - GameDataHub -->
+                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 fade-in delay-100">
+                        <div class="h-48 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center overflow-hidden">
+                            <img src="./main.png" alt="GameDataHub" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">GameDataHub</h3>
+                            <p class="text-gray-400 mb-4">A gaming data platform with comprehensive game information.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs px-2 py-1 bg-gray-700 rounded">React</span>
+                                <span class="text-xs px-2 py-1 bg-gray-700 rounded">API</span>
+                                <span class="text-xs px-2 py-1 bg-gray-700 rounded">Tailwind</span>
+                            </div>
+                            <a href="https://gamehub.hu" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 text-sm font-medium">View Project →</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 - Business Card -->
+                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 fade-in delay-200">
+                        <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center overflow-hidden">
+                            <img src="./p2.png" alt="My Business Card" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">My Business Card</h3>
+                            <p class="text-gray-400 mb-4">Digital business card with contact information.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs px-2 py-1 bg-gray-700 rounded">HTML</span>
+                                <span class="text-xs px-2 py-1 bg-gray-700 rounded">CSS</span>
+                                <span class="text-xs px-2 py-1 bg-gray-700 rounded">JavaScript</span>
+                            </div>
+                            <a href="https://mbusinesscard.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 text-sm font-medium">View Project →</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 - Money Tracker -->
+                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 fade-in delay-300">
+                        <div class="h-48 bg-gradient-to-r from-green-500 to-blue-600 flex items-center justify-center overflow-hidden">
+                            <img src="./p3.png" alt="Money Tracker" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Money Tracker</h3>
+                            <p class="text-gray-400 mb-4">Application for tracking personal finances.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs px-2 py-1 bg-gray-700 rounded">React</span>
+                                <span class="text-xs px-2 py-1 bg-gray-700 rounded">Firebase</span>
+                                <span class="text-xs px-2 py-1 bg-gray-700 rounded">Charts</span>
+                            </div>
+                            <a href="https://pflowtracker.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 text-sm font-medium">View Project →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-12 fade-in delay-400">
+                    <a href="#" class="inline-block px-8 py-3 border border-gray-700 rounded-full font-medium hover:bg-gray-800 transition">
+                        View All Projects
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section bg-gray-800">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-16 fade-in">
+                    <span class="gradient-text">Get In Touch</span>
+                </h2>
+                
+                <div class="max-w-2xl mx-auto fade-in delay-100">
+                    <p class="text-gray-400 text-lg mb-12">
+                        Have a project in mind or want to discuss potential opportunities? 
+                        Feel free to reach out - I'm always open to new collaborations and ideas.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                        <div class="bg-gray-700 p-6 rounded-xl fade-in delay-200">
+                            <div class="w-12 h-12 mx-auto bg-gray-600 rounded-full flex items-center justify-center text-xl text-blue-400 mb-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Email</h3>
+                            <p class="text-gray-400">alexszabi04@gmail.com</p>
+                        </div>
+                        
+                        <div class="bg-gray-700 p-6 rounded-xl fade-in delay-300">
+                            <div class="w-12 h-12 mx-auto bg-gray-600 rounded-full flex items-center justify-center text-xl text-purple-400 mb-4">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Phone</h3>
+                            <p class="text-gray-400">+36 70 123 4567</p>
+                        </div>
+                        
+                        <div class="bg-gray-700 p-6 rounded-xl fade-in delay-400">
+                            <div class="w-12 h-12 mx-auto bg-gray-600 rounded-full flex items-center justify-center text-xl text-green-400 mb-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Location</h3>
+                            <p class="text-gray-400">Kecskemét, Hungary</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center space-x-6 fade-in delay-500">
+                        <a href="https://www.linkedin.com/in/szabolcs-cs%C3%ADk-a4b767315/" target="_blank" class="text-gray-400 hover:text-blue-400 transition text-2xl">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/" target="_blank" class="text-gray-400 hover:text-gray-200 transition text-2xl">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:alexszabi04@gmail.com" class="text-gray-400 hover:text-red-400 transition text-2xl">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://www.instagram.com/cs_szabj04/" target="_blank" class="text-gray-400 hover:text-pink-500 transition text-2xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-8 bg-gray-900">
+            <div class="container mx-auto px-6 text-center">
+                <p class="text-gray-500 text-sm">
+                    &copy; 2025 Szabolcs Csík. All rights reserved.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Scroll animation observer
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        // Uncomment below if you want animations to trigger again when scrolling back up
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Section scroll snapping (optional - uncomment if you want strict section snapping)
+            /*
+            let isScrolling = false;
+            const scrollContainer = document.querySelector('.scroll-container');
+            
+            scrollContainer.addEventListener('scroll', () => {
+                if (!isScrolling) {
+                    isScrolling = true;
+                    
+                    const sections = document.querySelectorAll('.section');
+                    let closestSection = null;
+                    let closestDistance = Infinity;
+                    
+                    sections.forEach(section => {
+                        const rect = section.getBoundingClientRect();
+                        const distance = Math.abs(rect.top);
+                        
+                        if (distance < closestDistance) {
+                            closestDistance = distance;
+                            closestSection = section;
+                        }
+                    });
+                    
+                    if (closestSection) {
+                        closestSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                    
+                    setTimeout(() => {
+                        isScrolling = false;
+                    }, 1000);
+                }
+            });
+            */
+        });
+    </script>
+</body>
+</html>

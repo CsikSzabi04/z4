@@ -1,0 +1,87 @@
+body{
+    background-color: black;
+    color: white;
+    font-family: 'Comic Sans MS';
+    width: 100%;
+   
+}
+.main{
+    margin: 10px 100px;
+    display: block;
+    width: 80%;
+}
+header{
+    text-align: center;   margin: 30px 20px 50px 20px;  display: block; justify-content: space-between;  align-items: center;
+}
+.right{
+    float: right;
+    padding: 10px;
+    margin: 20px 20px 20px 0px;
+}
+.right button{
+    background-color: black;
+}
+.right span{
+    margin-top: 10px;
+    margin-right: 70px;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+}
+.right a{
+    text-decoration: none;
+}
+.center{
+    width: 48%;
+}
+.left{
+    padding: 10px;
+    margin: 10px;
+    float: left;
+}
+.left img{width: 70px; height: 50px;}
+.left h3{
+    font-size: 2rem;
+}
+#aboutme{
+    float: left;
+    padding-right: 30px;
+    margin-top: 200px;
+    font-weight: bold;
+}
+#aboutme h3{
+    font-size: 20px;
+}
+#aboutme h1{
+    font-size: 60px;
+    margin: 30px 0px;
+}
+#aboutme p{
+    font-size: 15px;
+    margin-bottom: 40px;
+}
+#aboutme input{
+    font-size: 20px;
+    margin-right: 20px;
+    padding: 8px;
+}
+.center1{
+    width: 100%;
+}
+#pic{
+    float: right;
+}
+#pic img{
+    border-radius: 50%;
+    width: 650px;
+    height: 700px;
+}
+footer{
+    width: 90%;
+}
+.fa{
+    font-size: 20px;
+    color: white;
+    padding: 5px;
+    float: right;
+}
